@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/homescreen.dart';
+import 'package:flutter_application_1/myexpanded.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:HomeScreen(),
+      home:MyExpanded(),
     ); 
   }
 }
