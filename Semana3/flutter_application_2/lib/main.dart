@@ -12,6 +12,15 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Conversor de Unidades',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Color(0xFF4B74FF),
+          centerTitle: true,
+          elevation: 0, // Blues
+        ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -19,13 +28,13 @@ class MainApp extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Color(0xFF4B74FF), // Blues
-                Color(0xFF7D4BFF), // Green
+                Color.fromARGB(255, 75, 33, 182), // Green
               ],
             ),
           ),
           child: Center(
             child: Text(
-              'Unidades de Conversión',
+              'Listo para Trabajar',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
