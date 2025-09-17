@@ -1,3 +1,4 @@
+import 'package:appconvertir/pages/longitud.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,13 +41,9 @@ class _MainAppState extends State<MainApp> {
                   indicator: BoxDecoration(
                     color:
                         Colors.red, // Fondo ROJO para la pestaña seleccionada
-                    // Si quieres esquinas redondeadas en el rojo:
-                    // borderRadius: BorderRadius.only(
-                    //   topLeft: Radius.circular(8),
-                    //   topRight: Radius.circular(8),
-                    // ),
                   ),
-                  indicatorSize: TabBarIndicatorSize.tab, // Hace que el indicador ocupe todo el espacio de la pestaña
+                  indicatorSize: TabBarIndicatorSize
+                      .tab, // Hace que el indicador ocupe todo el espacio de la pestaña
                   //indicatorPadding: EdgeInsets.zero, // Elimina cualquier padding del indicador para que ocupe todo
 
                   // *** COLORES DE TEXTO/ÍCONOS ***
@@ -54,7 +51,6 @@ class _MainAppState extends State<MainApp> {
                       .white, // Texto/Ícono de la pestaña seleccionada en BLANCO (sobre fondo rojo)
                   unselectedLabelColor: Colors
                       .red, // Texto/Ícono de las pestañas inactivas en ROJO (sobre fondo blanco)
-
                   // Estas propiedades ya no son necesarias con el indicador personalizado que rellena la pestaña:
                   // indicatorColor: Colors.white, // Esto es para una línea indicadora, no un fondo
                   // dividerColor: Colors.red, // Esto es para una línea divisoria
@@ -70,7 +66,7 @@ class _MainAppState extends State<MainApp> {
           body: TabBarView(
             // Aquí puedes poner el contenido de cada pestaña
             children: [
-              Center(child: Text('Contenido de Longitud')),
+              Longitud(),
               Center(child: Text('Contenido de Peso')),
               Center(child: Text('Contenido de Divisa')),
             ],
