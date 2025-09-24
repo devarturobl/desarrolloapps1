@@ -1,0 +1,9 @@
+Organization: DesarrolloApps1
+Project: notes
+password: oZ61qhoyRdsAonoe
+
+
+table: mynotes 
+
+Pub Dev: flutter pub add supabase_flutter
+
