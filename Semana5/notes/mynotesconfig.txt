@@ -7,3 +7,8 @@ table: mynotes
 
 Pub Dev: flutter pub add supabase_flutter
 
+
+En el proyecto de Supabase para el crud debemos establecer politicas
+RLS ejemplos
+
+

@@ -18,10 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainApp(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MainApp());
   }
 }
 
@@ -67,10 +64,39 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Supabase Demo Notes'), centerTitle: true),
-      body: Center(child: Text('Hello World!')),
       floatingActionButton: FloatingActionButton(
         onPressed: addNewNote,
         child: Icon(Icons.add),
+      ),
+      body: SafeArea(
+        child: StreamBuilder(
+          stream: notesDatabase.stream,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            final notes = snapshot.data!;
+            return ListView.builder(
+              itemCount: notes.length,
+              itemBuilder: (context, index) {
+                final currentNote = notes[index];
+                return ListTile(
+                  title: Text(
+                    currentNote.content,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      notesDatabase.deleteNote(currentNote);
+                    },
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
