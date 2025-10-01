@@ -87,11 +87,21 @@ class _MainAppState extends State<MainApp> {
                     style: TextStyle(color: Colors.black),
                   ),
                   subtitle: Text('Fecha: ${currentNote.created_at}'),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      notesDatabase.deleteNote(currentNote);
-                    },
+                  trailing: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          notesDatabase.deleteNote(currentNote);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          //notesDatabase.deleteNote(currentNote);
+                        },
+                      ),
+                    ],
                   ),
                 );
               },
