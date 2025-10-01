@@ -37,6 +37,27 @@ class _MainAppState extends State<MainApp> {
   final noteController = TextEditingController();
 
   //Funciones que consumiran los metodos CRUD
+  void updateNote(Note oldNote) {
+    noteController.text = oldNote.content;
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Update Note'),
+        content: TextField(controller: noteController),
+        actions: [
+          TextButton(
+            onPressed: () {
+              notesDatabase.updateNote(oldNote, noteController.text);
+              Navigator.pop(context);
+              noteController.clear();
+            },
+            child: Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
+
   void addNewNote() {
     showDialog(
       context: context,
@@ -88,17 +109,19 @@ class _MainAppState extends State<MainApp> {
                   ),
                   subtitle: Text('Fecha: ${currentNote.created_at}'),
                   trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          // Mostrar diálogo para editar la nota
+                          updateNote(currentNote);
+                        },
+                      ),
                       IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
                           notesDatabase.deleteNote(currentNote);
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {
-                          //notesDatabase.deleteNote(currentNote);
                         },
                       ),
                     ],
