@@ -1,0 +1,21 @@
+Organization: DesarrolloApps1
+Project: notes
+password: oZ61qhoyRdsAonoe
+
+
+table: mynotes 
+
+Pub Dev: flutter pub add supabase_flutter
+
+
+En el proyecto de Supabase para el crud debemos establecer politicas
+RLS ejemplos
+
+
+El app necesita permiso para acceder a internet para eso en el archivo
+AndroidMainfest.xml debemos agregar en la raiz principal
+
+    <!-- Permissions para que la app tenga acceso a internet-->
+     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+     <uses-permission android:name="android.permission.INTERNET" />
+

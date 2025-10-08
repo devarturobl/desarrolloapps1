@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+import 'package:notes/note.dart';
+import 'package:notes/note_database.dart';
+
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  //Consume mi clase donde tengo el CRUD
+  final notesDatabase = NoteDatabase();
+
+  //Controlador para el input donde meto texto|
+  final noteController = TextEditingController();
+
+  //Funciones que consumiran los metodos CRUD
+  void updateNote(Note oldNote) {
+    noteController.text = oldNote.content;
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Update Note'),
+        content: TextField(controller: noteController),
+        actions: [
+          TextButton(
+            onPressed: () {
+              notesDatabase.updateNote(oldNote, noteController.text);
+              Navigator.pop(context);
+              noteController.clear();
+            },
+            child: Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void addNewNote() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Add New Note'),
+        content: TextField(controller: noteController),
+        actions: [
+          TextButton(
+            onPressed: () {
+              //Declarar el contenido de la nota
+              final newNote = Note(content: noteController.text);
+              //Ejecutar el metodo create
+              notesDatabase.createNote(newNote);
+              Navigator.pop(context);
+              noteController.clear();
+            },
+            child: Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Supabase Demo Notes'), centerTitle: true),
+      floatingActionButton: FloatingActionButton(
+        onPressed: addNewNote,
+        child: Icon(Icons.add),
+      ),
+      body: SafeArea(
+        child: StreamBuilder(
+          stream: notesDatabase.stream,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            final notes = snapshot.data!;
+            return ListView.builder(
+              itemCount: notes.length,
+              itemBuilder: (context, index) {
+                final currentNote = notes[index];
+                return ListTile(
+                  title: Text(
+                    currentNote.content,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  subtitle: Text('Fecha: ${currentNote.created_at}'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          // Mostrar diálogo para editar la nota
+                          updateNote(currentNote);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          notesDatabase.deleteNote(currentNote);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
