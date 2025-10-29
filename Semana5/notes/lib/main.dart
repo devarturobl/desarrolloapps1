@@ -86,6 +86,7 @@ class _MainAppState extends State<MainApp> {
                     currentNote.content,
                     style: TextStyle(color: Colors.black),
                   ),
+                  subtitle: Text('Fecha: ${currentNote.created_at}'),
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {

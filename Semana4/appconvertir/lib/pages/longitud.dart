@@ -90,7 +90,7 @@ class _LongitudState extends State<Longitud> {
         children: [
           // Tarjeta de INPUT
           _buildConversionCard(
-            label: 'Unidad de entrada',
+            label: 'Unidad de ent',
             value: _inputValue,
             unit: _inputUnit,
             units: _lengthUnits,
