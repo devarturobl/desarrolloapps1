@@ -1,0 +1,183 @@
+import 'package:flutter/material.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Slack Brand Colors
+    const Color slackPurple = Color(0xFF4A154B);
+    const Color slackGreen = Color(0xFF007a5a);
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Spacer(flex: 1),
+              // Logo / Icon
+              const Icon(
+                Icons.check_circle_outline,
+                size: 64,
+                color: slackPurple,
+              ),
+              const SizedBox(height: 24),
+              // Headline
+              const Text(
+                'Iniciar sesión en TaskApp',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Te sugerimos usar la dirección de correo que usas en el trabajo.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              const SizedBox(height: 48),
+
+              // Form Fields
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'nombre@tu-empresa.com',
+                  hintText: 'nombre@tu-empresa.com',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: slackPurple, width: 2),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Contraseña',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: slackPurple, width: 2),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Sign In Button
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: slackGreen,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Iniciar sesión con Email',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Divider
+              const Row(
+                children: [
+                  Expanded(child: Divider(color: Colors.grey)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('O', style: TextStyle(color: Colors.grey)),
+                  ),
+                  Expanded(child: Divider(color: Colors.grey)),
+                ],
+              ),
+
+              const SizedBox(height: 24),
+
+              // Google Sign In Button (Mock)
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black87,
+                    side: const BorderSide(color: Colors.grey, width: 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.g_mobiledata,
+                    size: 28,
+                  ), // Placeholder for Google Icon
+                  label: const Text(
+                    'Iniciar sesión con Google',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+
+              const Spacer(flex: 2),
+
+              // Footer
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "¿No tienes cuenta? ",
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'Regístrate',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
