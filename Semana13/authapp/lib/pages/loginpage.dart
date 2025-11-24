@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 24),
               // Headline
               const Text(
-                'Iniciar sesión en TaskApp',
+                'Iniciar sesión en TaskApp Demo',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
