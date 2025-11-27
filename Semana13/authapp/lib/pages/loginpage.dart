@@ -1,8 +1,37 @@
+import 'package:authapp/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final authService = AuthService();
+
+  //controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void login() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    try {
+      await authService.singInWithEmailAndPassword(email, password);
+      // Navigate to the next screen or show success message
+    } catch (e) {
+      // Handle login error (e.g., show a snackbar with the error message)
+      if(mounted){
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error al iniciar sesión: $e')),
+        );
+      }
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     // Slack Brand Colors
@@ -44,6 +73,7 @@ class LoginScreen extends StatelessWidget {
 
               // Form Fields
               TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'nombre@tu-empresa.com',
                   hintText: 'nombre@tu-empresa.com',
@@ -67,6 +97,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Contraseña',
@@ -95,7 +126,9 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    login();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: slackGreen,
                     foregroundColor: Colors.white,
