@@ -1,5 +1,4 @@
 import 'package:authapp/auth/auth_gate.dart';
-import 'package:authapp/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
         fontFamily:
             'Roboto', // Default to Roboto, can be changed if user wants specific font
       ),
-      home: const RegisterPage(),
+      home: const AuthGate(),
     );
   }
 }

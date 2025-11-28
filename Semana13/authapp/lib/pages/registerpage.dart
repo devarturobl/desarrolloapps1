@@ -1,4 +1,5 @@
 import 'package:authapp/auth/auth_service.dart';
+import 'package:authapp/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -31,6 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       await authService.singUpWithEmailAndPassword(email, password);
+      Navigator.pop(context);
       // Navigate to the next screen or show success message
     } catch (e) {
       // Handle registration error (e.g., show a snackbar with the error message)
@@ -54,6 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //const Spacer(flex: 1),
               // Logo / Icon
@@ -177,7 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 300),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -187,7 +190,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: TextStyle(color: Colors.black54),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     child: const Text(
                       'Iniciar sesión',
                       style: TextStyle(

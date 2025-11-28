@@ -1,4 +1,5 @@
 import 'package:authapp/auth/auth_service.dart';
+import 'package:authapp/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -196,11 +197,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text(
-                      'Regístrate',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to registration screen
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterPage())
+                        );
+                      },
+                      child: Text(
+                        'Regístrate',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
