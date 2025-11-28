@@ -22,29 +22,38 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             const Text('Welcome to your profile!'),
-            SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: () {
-                    logout();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
+            SizedBox(height: 5),
+            Text(AuthService().getCurrentUserEmail() ?? 'No email found',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+            ),  
+            SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0, right: 50.0),
+              child: SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      logout();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      elevation: 0,
                     ),
-                    elevation: 0,
-                  ),
-                  child: const Text(
-                    'Cerrar sesión',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    child: const Text(
+                      'Cerrar sesión',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
+            ),
           ],
         ),
       ),
