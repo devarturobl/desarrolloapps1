@@ -72,11 +72,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ),  
             SizedBox(height: 5),
             _imageFile != null
-                ? Image.file(
-                    _imageFile!,
-                    width: 150,
-                    height: 150,
-                    fit: BoxFit.cover,
+                ? CircleAvatar(
+                    radius: 75,
+                    backgroundImage: FileImage(_imageFile!),
+                    backgroundColor: Colors.transparent,
                   )
                 : const Icon(
                     Icons.account_circle,
@@ -84,7 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: Colors.grey,
                   ),
             SizedBox(height: 5),
-            ElevatedButton(onPressed: pickImage, child: Text("Take Profile Picture")),
+            ElevatedButton(onPressed: pickImage, child: Text("Take a Picture")),
             SizedBox(height: 5),
             ElevatedButton(onPressed: uploadImage, child: Text("Up Picture")),
             SizedBox(height: 5),
