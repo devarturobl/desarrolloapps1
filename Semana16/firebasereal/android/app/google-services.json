@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942468613858",
+    "project_id": "chattec-c41f4",
+    "storage_bucket": "chattec-c41f4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942468613858:android:3e1cb982f2b965ddc8c0bb",
+        "android_client_info": {
+          "package_name": "com.example.firebasereal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTwbR9pJe9sr9OSfTwAABZBfM__mFwxRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
