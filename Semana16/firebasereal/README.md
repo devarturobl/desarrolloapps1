@@ -45,6 +45,8 @@ Comando -> firebase login
 Comando -> flutterfire configure --project=chattec-c41f4 
 # Nota: Te creara en el proyecto un archivo firebase_options.dart
 
+## Notas de Codigo
+
 
 
 
