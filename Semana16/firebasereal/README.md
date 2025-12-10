@@ -23,6 +23,7 @@ firebase auth -> flutter pub add firebase_auth
 cloud firestore -> flutter pub add cloud_firestore
 google fonts -> flutter pub add google_fonts
 uuid -> flutter pub add uuid
+spinkit -> flutter pub add flutter_spinkit
 
 
 ## Estructura Bloc
