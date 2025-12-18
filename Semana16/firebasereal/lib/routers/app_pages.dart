@@ -1,4 +1,5 @@
 import 'package:firebasereal/routers/app_routers.dart';
+import 'package:firebasereal/views/auth/login_view.dart';
 import 'package:firebasereal/views/splash_view.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -9,6 +10,7 @@ class AppPages {
   static const initial = AppRouters.splash;
   static final routes = [
   GetPage(name: AppRouters.splash, page: () => SplashView()),
+  GetPage(name: AppRouters.login, page: () => LoginView()),
     // Define your app routes here
     /*GetPage(name: AppRouters.splash, page: () => SplashView()),
     GetPage(name: AppRouters.home, page: () => HomeView()),

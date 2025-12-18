@@ -1,5 +1,10 @@
+import 'package:firebasereal/controllers/aut_controller.dart';
+import 'package:firebasereal/routers/app_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/route_manager.dart';
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -35,8 +40,22 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
 
     _animationController.forward();
 
-    //_checkAuthNavigate();
+    _checkAuthNavigate();
   } 
+
+  void _checkAuthNavigate() async {
+    await Future.delayed(Duration(seconds: 2));
+
+    final authController = Get.put(AutController(), permanent: true);
+
+    await Future.delayed(Duration(milliseconds: 500));
+
+    if(authController.isAuthenticated){
+      Get.offAndToNamed(AppRouters.main);
+    } else {
+      Get.offAllNamed(AppRouters.login);
+    }
+  }
 
   @override
   void dispose() {
